@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/PasskeyAuthentication.styles.css" asp-append-version="true"/>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </head>
 <body>
 <header>
@@ -27,12 +32,13 @@
                     </li>
                 </ul>
             </div>
-            @if ((Context.User.Identity?.IsAuthenticated ?? false) == false)
+            @if (!(Context.User.Identity?.IsAuthenticated ?? false))
             {
-                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Passkey">Passkey</a>
             }
             else
             {
+                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
                 <form asp-controller="Auth" asp-action="Logout">
                     <button>Logout</button>
                 </form>
@@ -51,9 +57,5 @@
         &copy; 2025 - PasskeyAuthentication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

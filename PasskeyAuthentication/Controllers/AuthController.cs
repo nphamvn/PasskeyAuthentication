@@ -62,4 +62,21 @@ public class AuthController : Controller
         await HttpContext.SignOutAsync();
         return RedirectToAction("Index", "Home");
     }
+    
+    [HttpGet("Passkey")]
+    public ActionResult Passkey()
+    {
+        return View();
+    }
+    
+    [Route("registerRequest")]
+    public async Task<ActionResult> RegisterRequest()
+    {
+        var options = new
+        {
+
+        };
+
+        return Json(options);
+    }
 }
