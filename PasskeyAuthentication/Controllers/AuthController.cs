@@ -55,4 +55,11 @@ public class AuthController : Controller
             authProperties);
         return RedirectToAction("Index", "Home");
     }
+    
+    [HttpPost("Logout")]
+    public async Task<ActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync();
+        return RedirectToAction("Index", "Home");
+    }
 }

@@ -31,6 +31,12 @@
             {
                 <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
             }
+            else
+            {
+                <form asp-controller="Auth" asp-action="Logout">
+                    <button>Logout</button>
+                </form>
+            }
         </div>
     </nav>
 </header>
