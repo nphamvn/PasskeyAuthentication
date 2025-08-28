@@ -27,6 +27,10 @@
                     </li>
                 </ul>
             </div>
+            @if ((Context.User.Identity?.IsAuthenticated ?? false) == false)
+            {
+                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+            }
         </div>
     </nav>
 </header>
